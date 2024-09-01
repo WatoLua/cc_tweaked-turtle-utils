@@ -3,41 +3,44 @@ local environmentUtils = {}
 function environmentUtils.suckLeft(count)
     count = count or 64
     turtle.turnLeft()
-    turtle.suck(count)
+    found, reason = turtle.suck(count)
     turtle.turnRight()
+    return found, reason
 end
 
 function environmentUtils.suckRight(count)
     count = count or 64
     turtle.turnRight()
-    turtle.suck(count)
+    found, reason = turtle.suck(count)
     turtle.turnLeft()
+    return found, reason
 end
 
 function environmentUtils.suckBack(count)
     count = count or 64
     turtle.turnRight()
     turtle.turnRight()
-    turtle.suck(count)
+    found, reason = turtle.suck(count)
     turtle.turnRight()
     turtle.turnRight()
+    return found, reason
 end
 
 function environmentUtils.suckAt(side, count)
     side = side or "front"
     count = count or 64
     if side == "left" then
-        environmentUtils.suckLeft(count)
+        return environmentUtils.suckLeft(count)
     elseif side == "right" then
-        environmentUtils.suckRight(count)
+        return environmentUtils.suckRight(count)
     elseif side == "back" then
-        environmentUtils.suckBack(count)
+        return environmentUtils.suckBack(count)
     elseif side == "front" then
-        turtle.suck()
+        return turtle.suck()
     elseif side == "up" then
-        turtle.suckUp()
+        return turtle.suckUp()
     elseif side == "down" then
-        turtle.suckDown()
+        return turtle.suckDown()
     else
         print("Error : Invalid given side to suck")
     end
@@ -46,41 +49,44 @@ end
 function environmentUtils.dropLeft(count)
     count = count or 64
     turtle.turnLeft()
-    turtle.drop(count)
+    dropped, reason = turtle.drop(count)
     turtle.turnRight()
+    return dropped, reason
 end
 
 function environmentUtils.dropRight(count)
     count = count or 64
     turtle.turnRight()
-    turtle.drop(count)
+    dropped, reason = turtle.drop(count)
     turtle.turnLeft()
+    return dropped, reason
 end
 
 function environmentUtils.dropBack(count)
     count = count or 64
     turtle.turnRight()
     turtle.turnRight()
-    turtle.drop(count)
+    dropped, reason = turtle.drop(count)
     turtle.turnRight()
     turtle.turnRight()
+    return dropped, reason
 end
 
 function environmentUtils.dropAt(side, count)
     side = side or "front"
     count = count or 64
     if side == "left" then
-        environmentUtils.dropLeft(count)
+        return environmentUtils.dropLeft(count)
     elseif side == "right" then
-        environmentUtils.dropRight(count)
+        return environmentUtils.dropRight(count)
     elseif side == "back" then
-        environmentUtils.dropBack(count)
+        return environmentUtils.dropBack(count)
     elseif side == "front" then
-        turtle.drop()
+        return turtle.drop()
     elseif side == "up" then
-        turtle.dropUp()
+        return turtle.dropUp()
     elseif side == "down" then
-        turtle.dropDown()
+        return turtle.dropDown()
     else
         print("Error : Invalid given side to drop")
     end
