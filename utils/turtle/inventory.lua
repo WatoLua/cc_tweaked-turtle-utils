@@ -1,4 +1,4 @@
-local environmentUtils = require("/utils/environment")
+local environmentUtils = require("/utils/turtle/environment")
 
 local inventoryUtils = {}
 
